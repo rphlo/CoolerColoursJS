@@ -1,1 +1,1 @@
-# CoolerColoursJS
+# CooleursJS
