@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CooleurJS Demo</title>
+</head>
+<body>
+<div id="list1">
+    Cooleur.candyColor(i)<br/>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+</div>
+<div id="list2">
+    Cooleur.heatColor(n) 0 < n <1<br/>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+</div>
+<div id="list3">
+    Cooleur.Breather(1000, callback).start()<br/>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+</div>
+<div id="list4">
+    Cooleur.ColorGlower(1000, callback).start()<br/>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+</div>
+<div>Cooleur.TextScroller(...).start()
+<pre><span id="text"></span></pre>
+</div>
+<script src="cooleur.js"></script>
+<script>
+window.onload = function(e){
+  var lis1 = document.getElementById("list1").getElementsByTagName("span");
+  var lis2 = document.getElementById("list2").getElementsByTagName("span");
+  var lis3 = document.getElementById("list3").getElementsByTagName("span");
+  var lis4 = document.getElementById("list4").getElementsByTagName("span");
+  Array.from(lis1).map(function(el, i) {
+    el.style.backgroundColor = Cooleur.candyColor(i);
+  })
+  Array.from(lis2).map(function(el, i) {
+    el.style.backgroundColor = Cooleur.heatColor(i/lis2.length);
+  })
+  b = Cooleur.Breather(
+    1000,
+    function(i) {
+      Array.from(lis3).map(function(el) {
+        el.style.backgroundColor = Cooleur.heatColor(i);
+      })
+    }
+  ).start()
+  b = Cooleur.ColorGlower(
+    1000,
+    function(color) {
+      Array.from(lis4).map(function(el) {
+        el.style.backgroundColor = color.hex();
+
+      })
+    }
+  ).start()
+  Cooleur.TextScroller(
+    document.getElementById("text"),
+    48,
+    "this is a very very very very very very very very long text",
+    '// ',
+     ' \\\\'
+  ).start()
+}
+</script>
+</body>
+</html>

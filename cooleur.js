@@ -107,20 +107,19 @@ Cooleur=(function() {
         return Color().fromHsl(h,1,l);
     };
     var Timer = _Cooleur.Timer = function(callback){
-        var    _Timer = {},
+        var _Timer = {},
             last = now(),
             running = false,
-            value = 0;
+            value = 0
+            interval = null;
         _Timer.start = function() {
             running = true;
+            interval = setInterval(this.read, 100)
             return this;
         };
         _Timer.stop = function() {
             running = true;
-            return this;
-        };
-        _Timer.toogle = function() {
-            running = !running;
+            clearInterval(interval)
             return this;
         };
         _Timer.read = function() {
@@ -136,10 +135,10 @@ Cooleur=(function() {
         };
         return _Timer;
     }
-    _Cooleur.Breather = function( period, callback ) {
-        period = getInt(period, 2000);
+    _Cooleur.Breather = function(period, callback) {
+        period = getInt(period * 10, 20000);
         var cb = function(x) {
-            var value = M.abs(M.sin(x / period *M.PI))
+            var value = M.abs(M.sin(x / period * M.PI))
             if (typeof callback == "function") {
                 return callback(value);
             }else{
@@ -153,7 +152,7 @@ Cooleur=(function() {
             dir=randSign(),
             last_update=0,
             rgb;
-        period=M.max(1,getInt(period,10));
+        period=M.max(1, getInt(period/100,10));
         rgb=[127,127,127]//Color().fromHsl(M.random(),1,0.5).rgbArray();
         var cb = function( t ) {
             var reset=false,
@@ -200,23 +199,23 @@ Cooleur=(function() {
             interval;
         header = header || "";
         footer = footer || "";
-        fill = fill || false;
+        fill = fill || true;
         display_size = size - header.length - footer.length;
         
         function showText() {
-            if(target.parent().length===0){
+            if(!target.parentElement){
                 clearInterval(interval);
                 return;
             }
             if (display_size >= text.length) {
                 if(fill) {
                     while(display_size>text.length){
-                        text+=" ";
+                        text += " ";
                     }
                 }
-                target.innerHtml = header + text;
+                target.innerHTML = header + text + footer;
             } else {
-                target.target.innerHtml = header + text.substr(offset, display_size);
+                target.innerHTML = header + text.substr(offset, display_size) + footer;
                 offset += direction;
                 if (direction === 0) {
                     if (pause_counter < pause_duration) {
