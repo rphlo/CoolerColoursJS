@@ -81,40 +81,7 @@
 </div>
 <div id="list3">
     Cooleur.Breather(1000, callback).start()<br/>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
+    <div id="text1" style="background-color:#000">&nbsp;</div>
 </div>
 <div id="list4">
     Cooleur.ColorGlower(1000, callback).start()<br/>
@@ -161,7 +128,6 @@
 window.onload = function(e){
   var lis1 = document.getElementById("list1").getElementsByTagName("span");
   var lis2 = document.getElementById("list2").getElementsByTagName("span");
-  var lis3 = document.getElementById("list3").getElementsByTagName("span");
   var lis4 = document.getElementById("list4").getElementsByTagName("span");
   Array.from(lis1).map(function(el, i) {
     el.style.backgroundColor = Cooleur.candyColor(i);
@@ -172,9 +138,8 @@ window.onload = function(e){
   b = Cooleur.Breather(
     1000,
     function(i) {
-      Array.from(lis3).map(function(el) {
-        el.style.backgroundColor = Cooleur.heatColor(i);
-      })
+      var el = document.getElementById('text1')
+      el.style.width = math.round(200*i);
     }
   ).start()
   b = Cooleur.ColorGlower(
