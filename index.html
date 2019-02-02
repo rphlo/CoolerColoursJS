@@ -79,46 +79,13 @@
     <span>&nbsp</span>
     <span>&nbsp</span>
 </div>
-<div id="list3">
+<div>
     Cooleur.Breather(1000, callback).start()<br/>
-    <div id="text1" style="background-color:#000;display:inline-block">&nbsp;</div>
+    <div id="div1" style="background-color:#000;display:inline-block">&nbsp;</div>
 </div>
-<div id="list4">
+<div>
     Cooleur.ColorGlower(1000, callback).start()<br/>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
-    <span>&nbsp</span>
+    <div id="div2">&nbsp</div>
 </div>
 <div>Cooleur.TextScroller(...).start()
 <pre><span id="text"></span></pre>
@@ -128,7 +95,6 @@
 window.onload = function(e){
   var lis1 = document.getElementById("list1").getElementsByTagName("span");
   var lis2 = document.getElementById("list2").getElementsByTagName("span");
-  var lis4 = document.getElementById("list4").getElementsByTagName("span");
   Array.from(lis1).map(function(el, i) {
     el.style.backgroundColor = Cooleur.candyColor(i);
   })
@@ -138,17 +104,15 @@ window.onload = function(e){
   b = Cooleur.Breather(
     1000,
     function(i) {
-      var el = document.getElementById('text1')
+      var el = document.getElementById('div1')
       el.style.width = Math.round(200*i)+'px';
     }
   ).start()
   b = Cooleur.ColorGlower(
     1000,
     function(color) {
-      Array.from(lis4).map(function(el) {
-        el.style.backgroundColor = color.hex();
-
-      })
+      var el = document.getElementById('div2')
+      el.style.backgroundColor = color.hex();
     }
   ).start()
   Cooleur.TextScroller(
